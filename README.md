@@ -43,6 +43,9 @@ npm run preview
 - `src/api` — методы для общения с бэкендом
 - `src/styles` — глобальные стили
 
+## Live demo
+- https://react-simple-movie-page-by-bakytnur.netlify.app/
+
 ## API
 Проект использует `https://cinemaguide.skillbox.cc` как `baseURL` (см. `src/api/http.ts`). Если нужно поменять адрес API, отредактируй `src/api/http.ts`.
 
