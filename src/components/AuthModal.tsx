@@ -68,7 +68,7 @@ export function AuthModal({
     event.preventDefault();
 
     if (!email || !password || (mode === "register" && (!name || !surname))) {
-      setErrorMessage("Все поля обязательны для заполнения");
+      setErrorMessage("All fields are required");
       return;
     }
 
@@ -84,7 +84,7 @@ export function AuthModal({
         });
 
         if (!loginResponse.result) {
-          setErrorMessage("Неверный email или пароль");
+          setErrorMessage("Invalid email or password");
           return;
         }
 
@@ -93,7 +93,7 @@ export function AuthModal({
           dispatch(setUser(currentUser));
         } catch (error) {
           setErrorMessage(
-            "Вход выполнен, но сессия не сохранилась. Проверьте cookies, VPN и proxy.",
+            "Login succeeded, but the session was not preserved. Check cookies, VPN, and proxy.",
           );
           return;
         }
@@ -123,23 +123,23 @@ export function AuthModal({
       setSurname("");
       setErrorMessage("");
       setSuccessMessage(
-        "Регистрация прошла успешно. Теперь войдите с этим email и паролем.",
+        "Registration completed successfully. Now sign in with this email and password.",
       );
     } catch (error: any) {
       if (error.response?.status === 409) {
-        setErrorMessage("Пользователь с таким email уже существует");
+        setErrorMessage("A user with this email already exists");
         return;
       }
 
       if (error.response?.status === 400) {
-        setErrorMessage("Проверь правильность введённых данных");
+        setErrorMessage("Please check the entered data");
         return;
       }
 
       setErrorMessage(
         mode === "login"
-          ? "Не удалось выполнить вход"
-          : "Не удалось выполнить регистрацию",
+          ? "Unable to log in"
+          : "Unable to register",
       );
     } finally {
       setIsSubmitting(false);
@@ -160,7 +160,7 @@ export function AuthModal({
         </button>
 
         <h2 className="auth-modal__title">
-          {mode === "login" ? "Вход" : "Регистрация"}
+          {mode === "login" ? "Login" : "Register"}
         </h2>
 
         <form className="auth-form" onSubmit={handleSubmit}>
@@ -172,7 +172,7 @@ export function AuthModal({
             <>
               <input
                 type="text"
-                placeholder="Имя"
+                placeholder="First name"
                 className={`auth-form__input ${hasNameError ? "auth-form__input_error" : ""}`}
                 onBlur={() => setIsNameTouched(true)}
                 value={name}
@@ -180,7 +180,7 @@ export function AuthModal({
               />
               <input
                 type="text"
-                placeholder="Фамилия"
+                placeholder="Last name"
                 className={`auth-form__input ${hasSurnameError ? "auth-form__input_error" : ""}`}
                 onBlur={() => setIsSurnameTouched(true)}
                 value={surname}
@@ -190,7 +190,7 @@ export function AuthModal({
           )}
           <input
             type="email"
-            placeholder="Электронная почта"
+            placeholder="Email"
             className={`auth-form__input ${hasEmailError ? "auth-form__input_error" : ""}`}
             onBlur={() => setIsEmailTouched(true)}
             value={email}
@@ -199,7 +199,7 @@ export function AuthModal({
 
           <input
             type="password"
-            placeholder="Пароль"
+            placeholder="Password"
             className={`auth-form__input ${hasPasswordError ? "auth-form__input_error" : ""}`}
             onBlur={() => setIsPasswordTouched(true)}
             value={password}
@@ -215,11 +215,11 @@ export function AuthModal({
           >
             {isSubmitting
               ? mode === "login"
-                ? "Входим..."
-                : "Регистрируем..."
+                ? "Logging in..."
+                : "Registering..."
               : mode === "login"
-                ? "Войти"
-                : "Зарегистрироваться"}
+                ? "Log in"
+                : "Register"}
           </button>
         </form>
 
@@ -230,7 +230,7 @@ export function AuthModal({
               className="auth-modal__switch"
               onClick={switchToRegister}
             >
-              Регистрация
+              Register
             </button>
           ) : (
             <button
@@ -238,7 +238,7 @@ export function AuthModal({
               className="auth-modal__switch"
               onClick={switchToLogin}
             >
-              У меня уже есть аккаунт
+              I already have an account
             </button>
           )}
         </div>

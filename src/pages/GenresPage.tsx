@@ -26,14 +26,14 @@ export function GenresPage(): JSX.Element {
 
       setGenres(preparedGenres);
     } catch (error) {
-      setErrorMessage("Не удалось загрузить жанры");
+      setErrorMessage("Failed to load genres");
     } finally {
       setIsLoading(false);
     }
   }
 
   if (isLoading) {
-    return <p>Загрузка жанров...</p>;
+    return <p>Loading genres...</p>;
   }
 
   if (errorMessage) {
@@ -42,7 +42,7 @@ export function GenresPage(): JSX.Element {
 
   return (
     <section>
-      <h1>Жанры</h1>
+      <h1>Genres</h1>
 
       <div className="genres-grid">
         {genres.map((genre) => (

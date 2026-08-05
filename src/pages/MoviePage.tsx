@@ -37,7 +37,7 @@ export function MoviePage(): JSX.Element {
       const movieData = await getMovieById(movieId);
       setMovie(movieData);
     } catch (error) {
-      setErrorMessage("Не удалось загрузить фильм");
+      setErrorMessage("Failed to load movie");
     } finally {
       setIsLoading(false);
     }
@@ -45,7 +45,7 @@ export function MoviePage(): JSX.Element {
 
   function openTrailer(): void {
     if (!movie?.trailerYouTubeId) {
-      setErrorMessage("Трейлер для этого фильма недоступен");
+      setErrorMessage("Trailer for this movie is unavailable");
       return;
     }
     setIsTrailerModalOpen(true);
@@ -82,8 +82,8 @@ export function MoviePage(): JSX.Element {
     } catch (error: any) {
       setErrorMessage(
         isFavorite
-          ? "Не удалось удалить фильм из избранного"
-          : "Не удалось добавить фильм в избранное",
+          ? "Failed to remove movie from favorites"
+          : "Failed to add movie to favorites",
       );
     } finally {
       setIsFavoriteLoading(false);
@@ -91,7 +91,7 @@ export function MoviePage(): JSX.Element {
   }
 
   if (isLoading) {
-    return <p>Загрузка фильма...</p>;
+    return <p>Loading movie...</p>;
   }
 
   if (errorMessage && !movie) {
@@ -99,7 +99,7 @@ export function MoviePage(): JSX.Element {
   }
 
   if (!movie) {
-    return <p>Фильм не найден</p>;
+    return <p>Movie not found</p>;
   }
 
   const isFavorite = favoriteMovies.some(
@@ -123,22 +123,22 @@ export function MoviePage(): JSX.Element {
         </h1>
 
         <p className="movie-details__text">
-          <strong>Оригинальное название:</strong> {movie.originalTitle}
+          <strong>Original title:</strong> {movie.originalTitle}
         </p>
         <p className="movie-details__text">
-          <strong>Год:</strong> {movie.releaseYear}
+          <strong>Year:</strong> {movie.releaseYear}
         </p>
         <p className="movie-details__text">
-          <strong>Рейтинг:</strong> {movie.tmdbRating}
+          <strong>Rating:</strong> {movie.tmdbRating}
         </p>
         <p className="movie-details__text">
-          <strong>Язык:</strong> {movie.language}
+          <strong>Language:</strong> {movie.language}
         </p>
         <p className="movie-details__text">
-          <strong>Жанры:</strong> {movie.genres.join(", ")}
+          <strong>Genres:</strong> {movie.genres.join(", ")}
         </p>
         <p className="movie-details__text">
-          <strong>Статус:</strong> {movie.status}
+          <strong>Status:</strong> {movie.status}
         </p>
         <p className="movie-details__description">{movie.plot}</p>
 
@@ -152,11 +152,11 @@ export function MoviePage(): JSX.Element {
             disabled={!movie.trailerYouTubeId}
             title={
               !movie.trailerYouTubeId
-                ? "Для этого фильма трейлер недоступен"
-                : "Открыть трейлер фильма"
+                ? "Trailer unavailable for this movie"
+                : "Open movie trailer"
             }
           >
-            {movie.trailerYouTubeId ? "Открыть трейлер" : "Трейлер недоступен"}
+            {movie.trailerYouTubeId ? "Open trailer" : "Trailer unavailable"}
           </button>
 
           <button
@@ -167,20 +167,20 @@ export function MoviePage(): JSX.Element {
             title={
               isFavoriteLoading
                 ? isFavorite
-                  ? "Удаляем фильм из избранного"
-                  : "Добавляем фильм в избранное"
+                  ? "Removing movie from favorites"
+                  : "Adding movie to favorites"
                 : isFavorite
-                  ? "Удалить фильм из избранного"
-                  : "Добавить фильм в избранное"
+                  ? "Remove movie from favorites"
+                  : "Add movie to favorites"
             }
           >
             {isFavoriteLoading
               ? isFavorite
-                ? "Удаляем..."
-                : "Добавляем..."
+                ? "Removing..."
+                : "Adding..."
               : isFavorite
-                ? "Удалить из избранного"
-                : "Добавить в избранное"}
+                ? "Remove from favorites"
+                : "Add to favorites"}
           </button>
         </div>
       </div>
