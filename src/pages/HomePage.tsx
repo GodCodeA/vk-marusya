@@ -33,7 +33,7 @@ export function HomePage(): JSX.Element {
       const top = topMoviesData.slice(0, 9);
       setTopMovies(top);
     } catch (error) {
-      setErrorMessage("Не удалось загрузить фильмы");
+      setErrorMessage("Failed to load movies");
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +46,7 @@ export function HomePage(): JSX.Element {
       const movie = await getRandomMovie();
       setRandomMovie(movie);
     } catch (error) {
-      setErrorMessage("Не удалось загрузить случайный фильм");
+      setErrorMessage("Failed to load random movie");
     } finally {
       setLoadRandomMovie(false);
     }
@@ -57,10 +57,10 @@ export function HomePage(): JSX.Element {
     const minutes = runtime % 60;
 
     if (!hours) {
-      return `${minutes} мин`;
+      return `${minutes} min`;
     }
 
-    return `${hours} ч ${minutes} мин`;
+    return `${hours} h ${minutes} min`;
   }
 
   function shortMoviePlot(plot: string) {
@@ -72,7 +72,7 @@ export function HomePage(): JSX.Element {
   }
 
   if (isLoading) {
-    return <p>Загружаем главную страницу...</p>;
+    return <p>Loading homepage...</p>;
   }
 
   if (errorMessage) {
@@ -80,7 +80,7 @@ export function HomePage(): JSX.Element {
       <section className="home-page">
         <p>{errorMessage}</p>;
         <button type="button" onClick={loadHomePageData}>
-          Повторить
+          Retry
         </button>
       </section>
     );
@@ -97,18 +97,18 @@ export function HomePage(): JSX.Element {
         >
           <div className="hero__content">
             <p className="hero__eyebrow">
-              VK Marusya — выбери фильм за пару секунд
+              VK Marusya — choose a movie in seconds
             </p>
             <h1 className="hero__title" title={randomMovie.title}>
               {randomMovie.title}
             </h1>
             <p className="hero__subtitle">
-              Случайный фильм, подборки по жанрам и топ‑10 — идеальная идея для
-              вечера.
+              A random movie, genre collections, and top 10 — the perfect idea for
+              the evening.
             </p>
-            <p className="hero__top-rating" title="Фильм с рейтингом выше 8.5">
+            <p className="hero__top-rating" title="Movie with rating above 8.5">
               {randomMovie.tmdbRating >= 8.5
-                ? `Топ рейтинг • ${randomMovie.tmdbRating}`
+                ? `Top rating • ${randomMovie.tmdbRating}`
                 : null}
             </p>
 
@@ -134,9 +134,9 @@ export function HomePage(): JSX.Element {
               <Link
                 to={`/movie/${randomMovie.id}`}
                 className="hero__button hero__button_primary"
-                title="Перейти на страницу фильма"
+                title="Go to movie page"
               >
-                Открыть фильм
+                View movie
               </Link>
 
               <button
@@ -146,13 +146,13 @@ export function HomePage(): JSX.Element {
                 disabled={loadRandomMovie}
                 title={
                   !loadRandomMovie
-                    ? "Показать другой случайный фильм"
-                    : "Загружаем другой фильм"
+                    ? "Show another random movie"
+                    : "Loading another movie"
                 }
               >
                 {loadRandomMovie === true
-                  ? "Загружаем фильм..."
-                  : "Другой фильм"}
+                  ? "Loading movie..."
+                  : "Another movie"}
               </button>
             </div>
           </div>
@@ -162,16 +162,15 @@ export function HomePage(): JSX.Element {
       <section className="home-section">
         <div className="home-section__header">
           <div>
-            <p className="home-section__eyebrow">Подборка вечера</p>
-            <h2 className="home-section__title">Топ-9 фильмов</h2>
+            <p className="home-section__eyebrow">Evening selection</p>
+            <h2 className="home-section__title">Top 9 movies</h2>
             <p className="home-section__subtitle">
-              Быстрый выбор для твоего вечернего кино — фильмы с высоким
-              рейтингом.
+              A quick choice for your evening movie — high-rated films.
             </p>
           </div>
 
           <Link to="/genres" className="home-section__link">
-            Смотреть жанры
+            View genres
           </Link>
         </div>
 

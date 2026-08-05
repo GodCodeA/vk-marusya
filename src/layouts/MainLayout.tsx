@@ -50,17 +50,17 @@ export function MainLayout(): JSX.Element {
 
           <nav className="navigation">
             <NavLink to="/" className="navigation__link">
-              Главная
+              Home
             </NavLink>
             <NavLink to="/genres" className="navigation__link">
-              Жанры
+              Genres
             </NavLink>
             <button
               type="button"
               className="navigation__link navigation__button"
               onClick={openSearchModal}
             >
-              Поиск
+              Search
             </button>
           </nav>
 
@@ -74,7 +74,7 @@ export function MainLayout(): JSX.Element {
               className="auth-button"
               onClick={openAuthModal}
             >
-              {window.innerWidth < 768 ? "Войти" : "Войти в аккаунт"}
+              {window.innerWidth < 768 ? "Sign in" : "Sign in to account"}
             </button>
           )}
         </div>

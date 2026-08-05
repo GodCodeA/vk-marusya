@@ -62,7 +62,7 @@ export function GenreDetailsPage(): JSX.Element {
 
       setMovies(sortedMovies);
     } catch (error) {
-      setErrorMessage("Не удалось загрузить фильмы жанра");
+      setErrorMessage("Failed to load genre movies");
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +72,7 @@ export function GenreDetailsPage(): JSX.Element {
   const hasMoreMovies = visibleMoviesCount < movies.length;
 
   if (isLoading) {
-    return <p>Загрузка фильмов</p>;
+    return <p>Loading movies</p>;
   }
 
   if (errorMessage) {
@@ -80,7 +80,7 @@ export function GenreDetailsPage(): JSX.Element {
   }
   return (
     <section>
-      <h1>Жанр: {genreName}</h1>
+      <h1>Genre: {genreName}</h1>
 
       <div className="movies-grid">
         {visibleMovies.map((movie) => (
@@ -92,7 +92,7 @@ export function GenreDetailsPage(): JSX.Element {
             />
             <div className="movie-card__content">
               <h2 className="movie-card__title">{movie.title}</h2>
-              <p className="movie-card__rating">Рейтинг: {movie.tmdbRating}</p>
+              <p className="movie-card__rating">Rating: {movie.tmdbRating}</p>
               <p className="movie-card__year">{movie.releaseYear}</p>
             </div>
           </Link>
@@ -101,7 +101,7 @@ export function GenreDetailsPage(): JSX.Element {
 
       {hasMoreMovies && (
         <div ref={observerTargetRef} className="movies-loader-trigger">
-          Загружаем ещё фильмы...
+          Loading more movies...
         </div>
       )}
     </section>

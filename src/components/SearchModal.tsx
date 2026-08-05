@@ -47,7 +47,7 @@ export function SearchModal({
       const moviesData = await searchMoviesByTitle(title);
       setMovies(moviesData);
     } catch (error) {
-      setErrorMessage("Не удалось выполнить поиск");
+      setErrorMessage("Search failed");
     } finally {
       setIsLoading(false);
     }
@@ -67,18 +67,18 @@ export function SearchModal({
           ×
         </button>
 
-        <h2 className="auth-modal__title">Поиск фильма</h2>
+        <h2 className="auth-modal__title">Search movies</h2>
 
         <input
           type="text"
-          placeholder="Введите название фильма"
+          placeholder="Enter movie title"
           className="auth-form__input"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />
 
         <div className="search-modal__results">
-          {isLoading && <p>Ищем фильмы...</p>}
+          {isLoading && <p>Searching movies...</p>}
 
           {!isLoading && errorMessage && (
             <p className="auth-form__error">{errorMessage}</p>
@@ -87,7 +87,7 @@ export function SearchModal({
           {!isLoading &&
             !errorMessage &&
             query.trim() &&
-            movies.length === 0 && <p>Ничего не найдено.</p>}
+            movies.length === 0 && <p>Nothing found.</p>}
 
           {!isLoading &&
             movies.map((movie) => (
@@ -105,7 +105,7 @@ export function SearchModal({
                 <div className="search-result__content">
                   <h3 className="search-result__title">{movie.title}</h3>
                   <p className="search-result__meta">
-                    {movie.releaseYear} • Рейтинг {movie.tmdbRating}
+                    {movie.releaseYear} • Rating {movie.tmdbRating}
                   </p>
                 </div>
               </Link>

@@ -26,13 +26,13 @@ export function TrailerModal({
           ×
         </button>
 
-        <h2 className="auth-modal__title">Трейлер: {movieTitle}</h2>
+        <h2 className="auth-modal__title">Trailer: {movieTitle}</h2>
 
         <div className="trailer-modal__player-wrapper">
           <iframe
             className="trailer-modal__player"
             src={trailerUrl}
-            title={`Трейлер фильма ${movieTitle}`}
+            title={`Trailer for ${movieTitle}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

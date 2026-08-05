@@ -14,7 +14,7 @@ export function ProfilePage(): JSX.Element {
     try {
       await logoutUser();
     } catch (error) {
-      console.error("Ошибка при выходе из аккаунта");
+      console.error("Error logging out");
     } finally {
       dispatch(clearUser());
       dispatch(clearFavoriteMovies());
@@ -23,54 +23,54 @@ export function ProfilePage(): JSX.Element {
   }
 
   if (!isAuthorized || !user) {
-    return <h1>Пользователь не авторизован</h1>;
+    return <h1>User is not authorized</h1>;
   }
 
   return (
     <section className="profile-page">
-      <h1 className="profile-page__title">Аккаунт</h1>
+      <h1 className="profile-page__title">Account</h1>
 
       <div className="profile-card">
         <p className="profile-card__text">
-          <strong>Имя:</strong> {user.name}
+          <strong>First name:</strong> {user.name}
         </p>
         <p className="profile-card__text">
-          <strong>Фамилия:</strong> {user.surname}
+          <strong>Last name:</strong> {user.surname}
         </p>
         <p className="profile-card__text" title={user.email}>
           <strong>Email:</strong> {user.email}
         </p>
-        <p className="profile-card__small-text">Используется для входа</p>
+        <p className="profile-card__small-text">Used for sign in</p>
         <p className="profile-card__text">
-          <strong>ID пользователя:</strong> {user.id}
+          <strong>User ID:</strong> {user.id}
         </p>
 
         <button
           type="button"
           className="profile-card__button"
           onClick={handleLogout}
-          title="Выйти из аккаунта"
+          title="Log out"
         >
-          Выйти
+          Log out
         </button>
       </div>
 
       <div className="profile-favorites">
         <h2 className="profile-favorites__title">
           {favoriteMovies.length >= 1
-            ? `Избранные фильмы: ${favoriteMovies.length}`
-            : "Избранные фильмы"}
+            ? `Favorite movies: ${favoriteMovies.length}`
+            : "Favorite movies"}
         </h2>
         {favoriteMovies.length >= 1 && (
           <p className="profile-favorites__subtitle">
             {favoriteMovies.length === 1
-              ? `У вас сохранен ${favoriteMovies.length} фильм`
-              : `У вас сохранено ${favoriteMovies.length} фильма`}
+              ? `You have saved ${favoriteMovies.length} movie`
+              : `You have saved ${favoriteMovies.length} movies`}
           </p>
         )}
         {favoriteMovies.length === 0 ? (
           <p>
-            Пока здесь пусто. Сохраните фильм в избранное, и он появится здесь.
+            It is empty here for now. Save a movie to favorites and it will appear here.
           </p>
         ) : (
           <div className="movies-grid">
@@ -89,10 +89,10 @@ export function ProfilePage(): JSX.Element {
                 <div className="movie-card__content">
                   <h3 className="movie-card__title">{movie.title}</h3>
                   <p className="movie-card__rating">
-                    Рейтинг: {movie.tmdbRating}
+                    Rating: {movie.tmdbRating}
                   </p>
                   <p className="movie-card__text">
-                    <strong>Год выпуска:</strong> {movie.releaseYear}
+                    <strong>Release year:</strong> {movie.releaseYear}
                   </p>
                 </div>
               </Link>

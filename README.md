@@ -1,69 +1,69 @@
 # VK Marusya
 
-Небольшое фронтенд-приложение для быстрой рекомендации фильмов: случайный фильм, подборки по жанрам и топ-10.
+A small frontend application for quick movie recommendations: random movie, genre collections, and top 10.
 
-## Что делает
-- Рекомендует случайный фильм
-- Показывает топ-10 фильмов
-- Подборки по жанрам и страница фильма с описанием
-- Поиск фильма по названию
+## Features
+- Recommends a random movie
+- Shows top 10 movies
+- Genre collections and movie detail page
+- Search movies by title
 
-## Быстрый старт
+## Quick start
 
-Требуется Node.js и npm.
+Requires Node.js and npm.
 
-Установить зависимости:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Запуск в режиме разработки:
+Run in development mode:
 
 ```bash
 npm run dev
 ```
 
-Сборка для продакшена:
+Build for production:
 
 ```bash
 npm run build
 ```
 
-Локальный предпросмотр сборки:
+Preview the production build locally:
 
 ```bash
 npm run preview
 ```
 
-## Структура проекта
-- `src/` — исходники React + TypeScript
-- `src/pages` — страницы (Home, Genres, Movie, Profile и пр.)
-- `src/components` — переиспользуемые компоненты (модалки, поиск, трейлер)
-- `src/api` — методы для общения с бэкендом
-- `src/styles` — глобальные стили
+## Project structure
+- `src/` — React + TypeScript source files
+- `src/pages` — pages (Home, Genres, Movie, Profile, etc.)
+- `src/components` — reusable components (modals, search, trailer)
+- `src/api` — backend API methods
+- `src/styles` — global styles
 
 ## Live demo
 - https://react-simple-movie-page-by-bakytnur.netlify.app/
 
 ## API
-Проект использует `https://cinemaguide.skillbox.cc` как `baseURL` (см. `src/api/http.ts`). Если нужно поменять адрес API, отредактируй `src/api/http.ts`.
+The project uses `https://cinemaguide.skillbox.cc` as the `baseURL` (see `src/api/http.ts`). If you need to change the API address, update `src/api/http.ts`.
 
-## Деплой
-Рекомендуется Vercel или Netlify — подключи репозиторий, настрой сборку `npm run build` и каталог для публикации `dist`.
+## Deployment
+Vercel or Netlify is recommended — connect the repository, set the build command to `npm run build`, and publish the `dist` folder.
 
-Пример шагов для Vercel:
+Example steps for Vercel:
 
-1. Зарегистрироваться / войти в Vercel
-2. Подключить репозиторий GitHub
-3. Настроить команду сборки `npm run build` и папку `dist`
+1. Sign up or log in to Vercel
+2. Connect the GitHub repository
+3. Set the build command to `npm run build` and the output folder to `dist`
 
-## Добавить страницу "О проекте" (опционально)
-Можно рендерить `README.md` внутри приложения через `react-markdown` и сделать маршрут `/about`.
+## Add an About page (optional)
+You can render `README.md` inside the app using `react-markdown` and create a `/about` route.
 
-## Вклад
-Если хочешь улучшить внешний вид или функционал — создавай ветки и присылай PR. Для обсуждения открывай issue.
+## Contribution
+If you want to improve the UI or functionality, create a branch and open a PR. Open an issue for discussion.
 
-## Лицензия
-MIT — используй и модифицируй по необходимости.
+## License
+MIT — use and modify as needed.
 
