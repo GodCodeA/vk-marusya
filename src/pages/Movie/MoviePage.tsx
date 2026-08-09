@@ -4,11 +4,15 @@ import {
   addMovieToFavorites,
   getMovieById,
   removeMovieFromFavorites,
-} from "../api/moviesApi";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { addFavoriteMovie, removeFavoriteMovie } from "../store/favoritesSlice";
-import { Movie } from "../types/movie";
-import { TrailerModal } from "../components/TrailerModal";
+} from "../../api/moviesApi";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import {
+  addFavoriteMovie,
+  removeFavoriteMovie,
+} from "../../store/favoritesSlice";
+import { Movie } from "../../types/movie";
+import { TrailerModal } from "../../components/TrailerModal";
+import "./index.css";
 
 export function MoviePage(): JSX.Element {
   const { movieId = "" } = useParams();
@@ -107,47 +111,47 @@ export function MoviePage(): JSX.Element {
   );
 
   return (
-    <section className="movie-details">
-      <div className="movie-details__poster-wrapper">
+    <section className="movie">
+      <div className="movie__poster-wrapper">
         <img
           src={movie.posterUrl}
           alt={movie.title}
-          className="movie-details__poster"
+          className="movie__poster"
           title={movie.title}
         />
       </div>
 
-      <div className="movie-details__info">
-        <h1 className="movie-details__title" title={movie.title}>
+      <div className="movie__info">
+        <h1 className="movie__title" title={movie.title}>
           {movie.title}
         </h1>
 
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Original title:</strong> {movie.originalTitle}
         </p>
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Year:</strong> {movie.releaseYear}
         </p>
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Rating:</strong> {movie.tmdbRating}
         </p>
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Language:</strong> {movie.language}
         </p>
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Genres:</strong> {movie.genres.join(", ")}
         </p>
-        <p className="movie-details__text">
+        <p className="movie__text">
           <strong>Status:</strong> {movie.status}
         </p>
-        <p className="movie-details__description">{movie.plot}</p>
+        <p className="movie__description">{movie.plot}</p>
 
         {errorMessage && <p className="auth-form__error">{errorMessage}</p>}
 
-        <div className="movie-details__actions">
+        <div className="movie__actions">
           <button
             type="button"
-            className="movie-details__button-trailer"
+            className="movie__button-trailer"
             onClick={openTrailer}
             disabled={!movie.trailerYouTubeId}
             title={
@@ -161,7 +165,7 @@ export function MoviePage(): JSX.Element {
 
           <button
             type="button"
-            className="movie-details__button-favorite"
+            className="movie__button-favorite"
             onClick={toggleFavoriteMovie}
             disabled={isFavoriteLoading}
             title={

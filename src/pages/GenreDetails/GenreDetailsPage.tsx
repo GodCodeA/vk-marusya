@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import { getMoviesByGenre } from "../api/moviesApi";
-import { Movie } from "../types/movie";
+import { getMoviesByGenre } from "../../api/moviesApi";
+import { Movie } from "../../types/movie";
+import "./index.scss";
 
 const MOVIES_PORTION_SIZE = 10;
 
@@ -79,28 +80,32 @@ export function GenreDetailsPage(): JSX.Element {
     return <p>{errorMessage}</p>;
   }
   return (
-    <section>
+    <section genre-details>
       <h1>Genre: {genreName}</h1>
 
-      <div className="movies-grid">
+      <div className="genre-details__grid">
         {visibleMovies.map((movie) => (
-          <Link key={movie.id} to={`/movie/${movie.id}`} className="movie-card">
+          <Link
+            key={movie.id}
+            to={`/movie/${movie.id}`}
+            className="genre-details__card"
+          >
             <img
               src={movie.posterUrl}
               alt={movie.title}
-              className="movie-card__image"
+              className="genre-details__image"
             />
-            <div className="movie-card__content">
-              <h2 className="movie-card__title">{movie.title}</h2>
-              <p className="movie-card__rating">Rating: {movie.tmdbRating}</p>
-              <p className="movie-card__year">{movie.releaseYear}</p>
+            <div className="genre-details__content">
+              <h2 className="genre-details__title">{movie.title}</h2>
+              <p className="genre-details__rating">Rating: {movie.tmdbRating}</p>
+              <p className="genre-details__year">{movie.releaseYear}</p>
             </div>
           </Link>
         ))}
       </div>
 
       {hasMoreMovies && (
-        <div ref={observerTargetRef} className="movies-loader-trigger">
+        <div ref={observerTargetRef} className="genre-details__loader-trigger">
           Loading more movies...
         </div>
       )}

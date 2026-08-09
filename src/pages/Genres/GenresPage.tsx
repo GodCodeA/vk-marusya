@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getGenres } from "../api/moviesApi";
-import { Genre } from "../types/genre";
-import { getGenreImage } from "../utils/genreImages";
+import { getGenres } from "../../api/moviesApi";
+import { Genre } from "../../types/genre";
+import { getGenreImage } from "../../utils/genreImages";
+import "./index.css";
 
 export function GenresPage(): JSX.Element {
   const [genres, setGenres] = useState<Genre[]>([]);
@@ -41,22 +42,22 @@ export function GenresPage(): JSX.Element {
   }
 
   return (
-    <section>
+    <section className="genres">
       <h1>Genres</h1>
 
-      <div className="genres-grid">
+      <div className="genres__grid">
         {genres.map((genre) => (
           <Link
             key={genre.name}
             to={`/genres/${genre.name}`}
-            className="genre-card"
+            className="genres__card"
           >
             <img
               src={genre.imageUrl}
               alt={genre.name}
-              className="genre-card__image"
+              className="genres__image"
             />
-            <span className="genre-card__title">{genre.name}</span>
+            <span className="genres__title">{genre.name}</span>
           </Link>
         ))}
       </div>

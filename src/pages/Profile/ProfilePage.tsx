@@ -1,8 +1,9 @@
-import { logoutUser } from "../api/authApi";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { clearUser } from "../store/userSlice";
+import { logoutUser } from "../../api/authApi";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { clearUser } from "../../store/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { clearFavoriteMovies } from "../store/favoritesSlice";
+import { clearFavoriteMovies } from "../../store/favoritesSlice";
+import "./index.css";
 
 export function ProfilePage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -27,27 +28,27 @@ export function ProfilePage(): JSX.Element {
   }
 
   return (
-    <section className="profile-page">
-      <h1 className="profile-page__title">Account</h1>
+    <section className="profile">
+      <h1 className="profile__title">Account</h1>
 
-      <div className="profile-card">
-        <p className="profile-card__text">
+      <div className="profile__card">
+        <p className="profile__card-text">
           <strong>First name:</strong> {user.name}
         </p>
-        <p className="profile-card__text">
+        <p className="profile__card-text">
           <strong>Last name:</strong> {user.surname}
         </p>
-        <p className="profile-card__text" title={user.email}>
+        <p className="profile__card-text" title={user.email}>
           <strong>Email:</strong> {user.email}
         </p>
-        <p className="profile-card__small-text">Used for sign in</p>
-        <p className="profile-card__text">
+        <p className="profile__card-small-text">Used for sign in</p>
+        <p className="profile__card-text">
           <strong>User ID:</strong> {user.id}
         </p>
 
         <button
           type="button"
-          className="profile-card__button"
+          className="profile__card-button"
           onClick={handleLogout}
           title="Log out"
         >
@@ -55,14 +56,14 @@ export function ProfilePage(): JSX.Element {
         </button>
       </div>
 
-      <div className="profile-favorites">
-        <h2 className="profile-favorites__title">
+      <div className="profile__favorites">
+        <h2 className="profile__favorites-title">
           {favoriteMovies.length >= 1
             ? `Favorite movies: ${favoriteMovies.length}`
             : "Favorite movies"}
         </h2>
         {favoriteMovies.length >= 1 && (
-          <p className="profile-favorites__subtitle">
+          <p className="profile__favorites-subtitle">
             {favoriteMovies.length === 1
               ? `You have saved ${favoriteMovies.length} movie`
               : `You have saved ${favoriteMovies.length} movies`}
@@ -70,28 +71,29 @@ export function ProfilePage(): JSX.Element {
         )}
         {favoriteMovies.length === 0 ? (
           <p>
-            It is empty here for now. Save a movie to favorites and it will appear here.
+            It is empty here for now. Save a movie to favorites and it will
+            appear here.
           </p>
         ) : (
-          <div className="movies-grid">
+          <div className="profile__movie-grid">
             {favoriteMovies.map((movie) => (
               <Link
                 key={movie.id}
                 to={`/movie/${movie.id}`}
-                className="movie-card"
+                className="profile__movie"
               >
                 <img
                   src={movie.posterUrl}
                   alt={movie.title}
-                  className="movie-card__image"
+                  className="profile__movie-image"
                   title={movie.title}
                 />
-                <div className="movie-card__content">
-                  <h3 className="movie-card__title">{movie.title}</h3>
-                  <p className="movie-card__rating">
+                <div className="profile__movie-content">
+                  <h3 className="profile__movie-title">{movie.title}</h3>
+                  <p className="profile__movie-rating">
                     Rating: {movie.tmdbRating}
                   </p>
-                  <p className="movie-card__text">
+                  <p className="profile__movie-text">
                     <strong>Release year:</strong> {movie.releaseYear}
                   </p>
                 </div>

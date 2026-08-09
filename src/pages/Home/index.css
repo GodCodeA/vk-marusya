@@ -1,0 +1,244 @@
+.home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.home__hero {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: end;
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 32px;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+.home__hero-content {
+  max-width: 640px;
+}
+
+.home__hero-eyebrow,
+.home__top-eyebrow {
+  margin: 0 0 12px;
+  color: #c8ff76;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home__hero-title {
+  margin: 0;
+  font-size: 72px;
+  line-height: 0.98;
+}
+
+.home__hero-subtitle {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.home__hero-top-rating {
+  margin: 0;
+  font-size: clamp(16px, 4vw, 24px);
+  color: #daa520;
+  line-height: 1.4;
+}
+
+.home__hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.home__hero-description {
+  max-width: 560px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.home__hero-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.home__hero-genre {
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.home__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.home__hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.home__hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.home__hero-button_primary {
+  background-color: #f3f6ea;
+  color: #0f1011;
+  box-shadow: 0 10px 30px rgba(243, 246, 234, 0.25);
+}
+
+.home__hero-button_secondary {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.home__top {
+  position: relative;
+  z-index: 1;
+}
+
+.home__top-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.home__top-title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.home__top-subtitle {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.home__top-link {
+  color: #c8ff76;
+  font-weight: 700;
+}
+
+.home__top-list {
+  padding: 8px;
+}
+
+.home__top-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  justify-content: space-between;
+  padding: 14px;
+  height: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 40, 43, 0.96),
+    rgba(27, 28, 29, 0.96)
+  );
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.home__top-card-rank {
+  color: #c8ff76;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.home__top-card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.home__top-card-content {
+  min-width: 0;
+  margin-top: auto;
+}
+
+.home__top-card-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home__top-card-meta {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 768px) {
+  .home__hero {
+    min-height: auto;
+    padding: 28px 22px;
+  }
+
+  .home__hero-eyebrow {
+    font-size: 11px;
+  }
+
+  .home__hero-title {
+    font-size: 38px;
+  }
+
+  .home__hero-description {
+    font-size: 16px;
+  }
+
+  .home__top-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .home__top-card {
+    grid-template-columns: 1fr;
+    padding: 7px;
+    gap: 7px;
+    border-radius: 16px;
+  }
+
+  .home__top-card-title {
+    margin: 0 0 5px;
+    font-size: 16px;
+  }
+}

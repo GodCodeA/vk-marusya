@@ -12,6 +12,8 @@ A small frontend application for quick movie recommendations: random movie, genr
 
 Requires Node.js and npm.
 
+> If you register and then have trouble signing in, enable third-party cookies in your browser settings. This app may require them for authentication to work correctly.
+
 Install dependencies:
 
 ```bash

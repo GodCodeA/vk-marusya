@@ -1,0 +1,27 @@
+.genres__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.genres__card {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: #1b1c1d;
+}
+
+.genres__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.genres__title {
+  display: block;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}

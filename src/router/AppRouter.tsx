@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout";
-import { GenreDetailsPage } from "../pages/GenreDetailsPage";
-import { GenresPage } from "../pages/GenresPage";
-import { HomePage } from "../pages/HomePage";
-import { MoviePage } from "../pages/MoviePage";
-import { NotFoundPage } from "../pages/NotFoundPage";
-import { ProfilePage } from "../pages/ProfilePage";
+import { GenreDetailsPage } from "../pages/GenreDetails/GenreDetailsPage";
+import { GenresPage } from "../pages/Genres/GenresPage";
+import { HomePage } from "../pages/Home/HomePage";
+import { MoviePage } from "../pages/Movie/MoviePage";
+import { NotFoundPage } from "../pages/NotFound/NotFoundPage";
+import { ProfilePage } from "../pages/Profile/ProfilePage";
 
 export function AppRouter(): JSX.Element {
   return (
