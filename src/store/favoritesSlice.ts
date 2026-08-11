@@ -4,11 +4,13 @@ import { Movie } from "../types/movie";
 interface FavoritesState {
   movies: Movie[];
   isLoading: boolean;
+  error: string | null;
 }
 
 const initialState: FavoritesState = {
   movies: [],
   isLoading: false,
+  error: null,
 };
 
 const favoritesSlice = createSlice({
@@ -24,6 +26,14 @@ const favoritesSlice = createSlice({
     setFavoriteMovies(state, action: PayloadAction<Movie[]>) {
       state.movies = action.payload;
       state.isLoading = false;
+      state.error = null;
+    },
+    setFavoritesError(state, action: PayloadAction<string | null>) {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
+    clearFavoritesError(state) {
+      state.error = null;
     },
     addFavoriteMovie(state, action: PayloadAction<Movie>) {
       state.movies.unshift(action.payload);
@@ -36,6 +46,7 @@ const favoritesSlice = createSlice({
     clearFavoriteMovies(state) {
       state.movies = [];
       state.isLoading = false;
+      state.error = null;
     },
   },
 });
@@ -44,6 +55,8 @@ export const {
   startFavoritesLoading,
   finishFavoritesLoading,
   setFavoriteMovies,
+  setFavoritesError,
+  clearFavoritesError,
   addFavoriteMovie,
   removeFavoriteMovie,
   clearFavoriteMovies,

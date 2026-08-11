@@ -9,7 +9,12 @@ import {
   setUser,
   startUserLoading,
 } from "./store/userSlice";
-import { clearFavoriteMovies, setFavoriteMovies } from "./store/favoritesSlice";
+import {
+  clearFavoriteMovies,
+  setFavoriteMovies,
+  setFavoritesError,
+} from "./store/favoritesSlice";
+import { isAuthError, getFavoritesErrorMessage } from "./utils/Errors";
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,11 +27,33 @@ function App(): JSX.Element {
     try {
       dispatch(startUserLoading());
 
-      const user = await getCurrentUser();
-      dispatch(setUser(user));
+      const profilePromise = getCurrentUser();
+      const favoritesPromise = getFavoriteMovies();
 
-      const favoriteMovies = await getFavoriteMovies();
-      dispatch(setFavoriteMovies(favoriteMovies));
+      const [profileResult, favoritesResult] = await Promise.allSettled([
+        profilePromise,
+        favoritesPromise,
+      ]);
+
+      if (profileResult.status === "fulfilled") {
+        dispatch(setUser(profileResult.value));
+      } else if (
+        profileResult.status === "rejected" &&
+        isAuthError(profileResult.reason)
+      ) {
+        dispatch(clearUser());
+        dispatch(clearFavoriteMovies());
+      } else {
+        dispatch(clearUser());
+      }
+
+      if (favoritesResult.status === "fulfilled") {
+        dispatch(setFavoriteMovies(favoritesResult.value));
+      } else {
+        dispatch(clearFavoriteMovies());
+        const message = getFavoritesErrorMessage(favoritesResult.reason);
+        dispatch(setFavoritesError(message));
+      }
     } catch (error) {
       dispatch(clearUser());
       dispatch(clearFavoriteMovies());

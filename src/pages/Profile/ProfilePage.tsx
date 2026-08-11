@@ -10,6 +10,7 @@ export function ProfilePage(): JSX.Element {
   const navigate = useNavigate();
   const { user, isAuthorized } = useAppSelector((state) => state.user);
   const favoriteMovies = useAppSelector((state) => state.favorites.movies);
+  const favoritesError = useAppSelector((state) => state.favorites.error);
 
   async function handleLogout(): Promise<void> {
     try {
@@ -62,44 +63,44 @@ export function ProfilePage(): JSX.Element {
             ? `Favorite movies: ${favoriteMovies.length}`
             : "Favorite movies"}
         </h2>
-        {favoriteMovies.length >= 1 && (
-          <p className="profile__favorites-subtitle">
-            {favoriteMovies.length === 1
-              ? `You have saved ${favoriteMovies.length} movie`
-              : `You have saved ${favoriteMovies.length} movies`}
-          </p>
-        )}
-        {favoriteMovies.length === 0 ? (
-          <p>
-            It is empty here for now. Save a movie to favorites and it will
-            appear here.
-          </p>
+
+        {favoritesError ? (
+          <div className="error">{favoritesError}</div>
+        ) : favoriteMovies.length === 0 ? (
+          <p>It is empty here for now...</p>
         ) : (
-          <div className="profile__movie-grid">
-            {favoriteMovies.map((movie) => (
-              <Link
-                key={movie.id}
-                to={`/movie/${movie.id}`}
-                className="profile__movie"
-              >
-                <img
-                  src={movie.posterUrl}
-                  alt={movie.title}
-                  className="profile__movie-image"
-                  title={movie.title}
-                />
-                <div className="profile__movie-content">
-                  <h3 className="profile__movie-title">{movie.title}</h3>
-                  <p className="profile__movie-rating">
-                    Rating: {movie.tmdbRating}
-                  </p>
-                  <p className="profile__movie-text">
-                    <strong>Release year:</strong> {movie.releaseYear}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <>
+            <p className="profile__favorites-subtitle">
+              {favoriteMovies.length === 1
+                ? `You have saved ${favoriteMovies.length} movie`
+                : `You have saved ${favoriteMovies.length} movies`}
+            </p>
+            <div className="profile__movie-grid">
+              {favoriteMovies.map((movie) => (
+                <Link
+                  key={movie.id}
+                  to={`/movie/${movie.id}`}
+                  className="profile__movie"
+                >
+                  <img
+                    src={movie.posterUrl}
+                    alt={movie.title}
+                    className="profile__movie-image"
+                    title={movie.title}
+                  />
+                  <div className="profile__movie-content">
+                    <h3 className="profile__movie-title">{movie.title}</h3>
+                    <p className="profile__movie-rating">
+                      Rating: {movie.tmdbRating}
+                    </p>
+                    <p className="profile__movie-text">
+                      <strong>Release year:</strong> {movie.releaseYear}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </section>

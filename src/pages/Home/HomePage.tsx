@@ -79,7 +79,7 @@ export function HomePage(): JSX.Element {
   if (errorMessage) {
     return (
       <section className="home">
-        <p>{errorMessage}</p>;
+        <p>{errorMessage}</p>
         <button type="button" onClick={loadHomePageData}>
           Retry
         </button>
