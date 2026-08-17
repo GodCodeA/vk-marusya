@@ -49,9 +49,6 @@ export function MainLayout(): JSX.Element {
           </Link>
 
           <nav className="navigation">
-            <NavLink to="/" className="navigation__link">
-              Home
-            </NavLink>
             <NavLink to="/genres" className="navigation__link">
               Genres
             </NavLink>
