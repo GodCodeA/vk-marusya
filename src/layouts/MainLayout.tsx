@@ -74,7 +74,7 @@ export function MainLayout(): JSX.Element {
               className="auth-button"
               onClick={openAuthModal}
             >
-              {window.innerWidth < 768 ? "Sign in" : "Sign in to account"}
+              Sign in
             </button>
           )}
         </div>
