@@ -1,0 +1,5 @@
+$kind: http-request
+name: Logout
+method: GET
+url: 'https://cinemaguide.skillbox.cc/auth/logout'
+order: 4000

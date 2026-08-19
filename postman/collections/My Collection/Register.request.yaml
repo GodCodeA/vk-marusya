@@ -1,0 +1,17 @@
+$kind: http-request
+name: Register
+method: POST
+url: 'https://cinemaguide.skillbox.cc/user'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "test@example.com",
+      "password": "123456",
+      "name": "John",
+      "surname": "Doe"
+    }

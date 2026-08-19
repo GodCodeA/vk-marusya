@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Current User
+method: GET
+url: 'https://cinemaguide.skillbox.cc/profile'
+order: 3000

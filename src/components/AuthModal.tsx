@@ -72,6 +72,20 @@ export function AuthModal({
       return;
     }
 
+    const nameRegex = /^[A-Za-zA-Яа-яЁё]+$/;
+
+    if (mode === "register") {
+      if (!nameRegex.test(normalizedName)) {
+        setErrorMessage("Name must contain only letters");
+        return;
+      }
+
+      if (!nameRegex.test(normalizedSurname)) {
+        setErrorMessage("Surname must contain only letters");
+        return;
+      }
+    }
+
     try {
       setIsSubmitting(true);
       setErrorMessage("");
@@ -137,9 +151,7 @@ export function AuthModal({
       }
 
       setErrorMessage(
-        mode === "login"
-          ? "Unable to log in"
-          : "Unable to register",
+        mode === "login" ? "Unable to log in" : "Unable to register",
       );
     } finally {
       setIsSubmitting(false);
