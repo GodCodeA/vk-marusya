@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { getMoviesByGenre } from "../../api/moviesApi";
 import { Movie } from "../../types/movie";
-import "./index.scss";
+import "./index.css";
 
 const MOVIES_PORTION_SIZE = 10;
 
