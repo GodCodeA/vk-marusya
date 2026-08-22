@@ -104,7 +104,7 @@ export function HomePage(): JSX.Element {
               {randomMovie.title}
             </h1>
             <p className="home__hero-subtitle">
-              A random movie, genre collections, and top 10 — the perfect idea
+              A random movie, genre collections, and top 9 — the perfect idea
               for the evening.
             </p>
             <p

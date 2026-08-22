@@ -1,10 +1,10 @@
 # VK Marusya
 
-A small frontend application for quick movie recommendations: random movie, genre collections, and top 10.
+A small frontend application for quick movie recommendations: random movie, genre collections, and top 9.
 
 ## Features
 - Recommends a random movie
-- Shows top 10 movies
+- Shows top 9 movies
 - Genre collections and movie detail page
 - Search movies by title
 
