@@ -207,6 +207,36 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* home-page loading */
+.home__page-loading {
+  text-align: center;
+  padding: 20px;
+}
+
+/* error messages and button */
+.home__error {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-self: center;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 19px;
+}
+
+.home__error-message {
+  text-align: center;
+  margin: 0;
+}
+
+.home__error-btn {
+  padding: 4px 14px;
+  border: none;
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   .home__hero {
     min-height: auto;

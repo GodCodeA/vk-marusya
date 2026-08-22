@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const httpClient = axios.create({
-  baseURL: "https://cinemaguide.skillbox.cc",
+  baseURL: "https://cinemaguide.skillbox.c",
   withCredentials: true,
 });

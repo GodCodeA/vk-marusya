@@ -34,7 +34,7 @@ export function HomePage(): JSX.Element {
       const top = topMoviesData.slice(0, 9);
       setTopMovies(top);
     } catch (error) {
-      setErrorMessage("Failed to load movies");
+      setErrorMessage("Failed to load movies :(");
     } finally {
       setIsLoading(false);
     }
@@ -73,17 +73,21 @@ export function HomePage(): JSX.Element {
   }
 
   if (isLoading) {
-    return <p>Loading homepage...</p>;
+    return <p className="home__page-loading">Loading homepage...</p>;
   }
 
   if (errorMessage) {
     return (
-      <section className="home">
-        <p>{errorMessage}</p>
-        <button type="button" onClick={loadHomePageData}>
+      <div className="home__error">
+        <p className="home__error-message">{errorMessage}</p>
+        <button
+          className="home__error-btn"
+          type="button"
+          onClick={loadHomePageData}
+        >
           Retry
         </button>
-      </section>
+      </div>
     );
   }
 
