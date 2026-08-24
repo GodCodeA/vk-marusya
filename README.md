@@ -46,19 +46,13 @@ npm run preview
 - `src/styles` — global styles
 
 ## Live demo
-- https://react-simple-movie-page-by-bakytnur.netlify.app/
+- https://vk-marusya.pages.dev
 
 ## API
 The project uses `https://cinemaguide.skillbox.cc` as the `baseURL` (see `src/api/http.ts`). If you need to change the API address, update `src/api/http.ts`.
 
 ## Deployment
-Vercel or Netlify is recommended — connect the repository, set the build command to `npm run build`, and publish the `dist` folder.
-
-Example steps for Vercel:
-
-1. Sign up or log in to Vercel
-2. Connect the GitHub repository
-3. Set the build command to `npm run build` and the output folder to `dist`
+Cloudflare is recommended — connect the repository, set the build command to `npm run build`, and publish the `dist` folder.
 
 ## Add an About page (optional)
 You can render `README.md` inside the app using `react-markdown` and create a `/about` route.
